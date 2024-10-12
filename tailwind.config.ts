@@ -2,16 +2,16 @@ import { addIconSelectors } from "@iconify/tailwind";
 import { skeleton } from "@skeletonlabs/tw-plugin";
 import { join } from "path";
 import type { Config } from "tailwindcss";
+import { resolve } from "./require.ts";
 import { theme } from "./theme.ts";
 
 export default {
   darkMode: "class",
   content: [
-    "./src/**/*.{html,js,svelte,ts,templ,go,cjs,mjs}",
-    "./compile/**/*.{html,js,svelte,ts,templ,go,cjs,mjs}",
+    "./project/**/*.{html,js,svelte,ts,templ,go,cjs,mjs}",
     join(
-      require.resolve("@skeletonlabs/skeleton"),
-      "./src/**/*.{html,js,svelte,ts,templ,go,cjs,mjs}",
+      resolve("@skeletonlabs/skeleton"),
+      "./project/**/*.{html,js,svelte,ts,templ,go,cjs,mjs}",
     ),
   ],
   theme: {

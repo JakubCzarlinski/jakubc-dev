@@ -1,4 +1,4 @@
-import "@/src/app.css";
+import "@/project/src/app.css";
 import { hydrate } from "svelte";
 
 const modules = import.meta.glob("./lib/**/*.svelte");

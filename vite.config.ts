@@ -1,10 +1,10 @@
-import config from "@/tailwind.config.ts";
 import purgecss from "@fullhuman/postcss-purgecss";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import autoprefixer from "autoprefixer";
-import { resolve } from "path";
 import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
+import { resolve } from "./require.ts";
+import config from "./tailwind.config.ts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,7 +15,7 @@ export default defineConfig({
   ],
   css: {
     postcss: {
-      plugins: [tailwindcss({ config: config }), autoprefixer()],
+      plugins: [tailwindcss({ config }), autoprefixer()],
     },
   },
   resolve: {
