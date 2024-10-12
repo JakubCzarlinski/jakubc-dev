@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "@/project/src/lib/app.css";
   import Counter from "@/project/src/lib/nested/Counter.svelte";
 </script>
 
@@ -19,9 +20,3 @@
 
   <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
 </main>
-
-<style>
-  .read-the-docs {
-    color: #888;
-  }
-</style>
