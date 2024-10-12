@@ -1,3 +1,6 @@
-[submodule "render"]
-	path = render
+[submodule "build/render_to_templ"]
+	path = build/render_to_templ
+	url = https://github.com/JakubCzarlinski/svelte-ssr-to-templ
+[submodule "build/render"]
+	path = build/render
 	url = https://github.com/JakubCzarlinski/svelte-ssr

@@ -33,6 +33,6 @@
     "tslib": "^2.7.0",
     "typescript": "^5.5.3",
     "vite": "^5.4.8",
-    "svelte-ssr": "file:./render"
+    "svelte-ssr": "file:./build/render"
   }
 }
