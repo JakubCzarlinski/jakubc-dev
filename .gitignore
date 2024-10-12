@@ -47,3 +47,5 @@ go.work.sum
 
 /compile
 /project/gen/
+
+*_templ.go

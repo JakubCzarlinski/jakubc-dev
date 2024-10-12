@@ -1,10 +1,10 @@
 import "@/project/src/app.css";
 import { hydrate } from "svelte";
 
-const modules = import.meta.glob("./lib/**/*.svelte");
+const modules = import.meta.glob("@/project/src/lib/**/*.svelte");
 Object.keys(modules).forEach((path) => modules[path]());
 
-const targets: string[] = ["Counter"];
+const targets: string[] = ["App", "Counter"];
 
 for (let i = 0; i < targets.length; i++) {
   loadComponents(targets[i]);
@@ -20,10 +20,10 @@ async function loadComponents(className: string) {
 }
 
 async function mountComponent(element: Element, Component: any) {
-  const unmountable = hydrate(Component, {
+  hydrate(Component, {
     target: element.firstElementChild as Element,
     props: JSON.parse(element.getAttribute("svelte") as string),
   });
-  element.replaceChildren(...Array.from(element.children[0].children));
+  element.replaceChildren(...element.children[0].children);
   element.removeAttribute("svelte");
 }
