@@ -1,0 +1,21 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "./src/db/queries/"
+    schema: "./src/db/schema.sql"
+    gen:
+      go:
+        package: "data"
+        out: "../data"
+        sql_package: "pgx/v5"
+        emit_params_struct_pointers: true
+        emit_result_struct_pointers: true
+        emit_pointers_for_null_types: true
+        output_db_file_name: db.go
+        output_files_suffix: ".go"
+        output_batch_file_name: batch.go
+        output_models_file_name: models.go
+        output_querier_file_name: querier.go
+        emit_json_tags: true
+        # emit_interface: true
+        # emit_methods_with_db_argument: true
