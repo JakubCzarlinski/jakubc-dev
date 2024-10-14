@@ -22,8 +22,11 @@ COPY . .
 # Change directory to /app
 RUN cd /app
 
-# RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render
-# RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ
+RUN rm -rf ./build/render
+RUN rm -rf ./build/render_to_templ
+
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
 
 # Build the Go app
 RUN go install github.com/a-h/templ/cmd/templ@latest
