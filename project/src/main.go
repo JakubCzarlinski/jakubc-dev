@@ -1,9 +1,6 @@
 package main
 
 import (
-	"log"
-	"net/http"
-	_ "net/http/pprof"
 	"project/gen/App"
 	"project/src/assets"
 	"project/src/flags"
@@ -15,10 +12,6 @@ import (
 )
 
 func main() {
-	go func() {
-		log.Println(http.ListenAndServe("localhost:6060", nil))
-	}()
-
 	gin.SetMode(gin.ReleaseMode)
 
 	var router *gin.Engine

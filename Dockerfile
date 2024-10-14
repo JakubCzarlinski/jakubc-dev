@@ -12,9 +12,7 @@ RUN go install github.com/a-h/templ/cmd/templ@latest
 # Add Bun to PATH
 ENV PATH="/root/.bun/bin:${PATH}"
 ENV OS="linux"
-
-# Print the GOOS
-RUN echo "OS: $OS"
+ENV PROD="true"
 
 WORKDIR /app
 
