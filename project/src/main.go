@@ -58,11 +58,11 @@ func main() {
 	}
 
 	if flags.UseHttps {
-		logging.Info(logging.Green("Listening on https://localhost:443"))
-		router.RunTLS(":443", "./server.crt", "./server.key")
+		logging.Info(logging.Green("Listening on https://localhost:3000"))
+		router.RunTLS(":3000", "./server.crt", "./server.key")
 	} else {
-		logging.Info(logging.Green("Listening on http://localhost:80"))
-		router.Run(":80")
+		logging.Info(logging.Green("Listening on http://localhost:3000"))
+		router.Run(":3000")
 	}
 }
 
