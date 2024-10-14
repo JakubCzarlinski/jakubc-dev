@@ -5,7 +5,7 @@ export const theme: CustomThemeConfig = {
   properties: {
     // =~= Theme Properties =~=
     "--theme-font-family-base": `system-ui`,
-    "--theme-font-family-heading": `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace`,
+    "--theme-font-family-heading": `Recoleta`,
     "--theme-font-color-base": "14 14 14",
     "--theme-font-color-dark": "255 255 255",
     "--theme-rounded-base": "9999px",

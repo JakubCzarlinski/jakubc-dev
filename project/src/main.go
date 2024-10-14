@@ -8,6 +8,7 @@ import (
 	"project/src/assets"
 	"project/src/flags"
 	"project/src/pages/head"
+	"time"
 
 	"github.com/JakubCzarlinski/go-logging"
 	"github.com/gin-gonic/gin"
@@ -34,6 +35,27 @@ func main() {
 	}
 
 	router.GET("/", HomePage)
+
+	if flags.UseLiveReload {
+		router.GET("/sse", func(ginContext *gin.Context) {
+			ginContext.Header("Content-Type", "text/event-stream")
+			ginContext.Header("Cache-Control", "no-cache")
+			ginContext.Header("Connection", "keep-alive")
+			ginContext.Writer.Flush()
+
+			for {
+				message := "data:" + "\n\n"
+				message += "retry: 300\n\n"
+				_, err := ginContext.Writer.Write([]byte(message))
+				if err != nil {
+					logging.Info(logging.Blue("Reloading..."))
+					return
+				}
+				ginContext.Writer.Flush()
+				time.Sleep(5 * time.Second)
+			}
+		})
+	}
 
 	if flags.UseHttps {
 		logging.Info(logging.Green("Listening on https://localhost:3000"))

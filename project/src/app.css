@@ -1,83 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --bg: #f0dba5;
+  --text: #151515;
+  --yellow: #edb74d;
+  --red: #eb6666;
+  --green: #6fb18a;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+::selection {
+  @apply bg-secondary-700;
+}
+::-moz-selection {
+  @apply bg-secondary-700;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  @apply h1;
+}
+h2 {
+  @apply h2;
 }
 
-.card {
-  padding: 2em;
+body::before,
+body::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 40%;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body::before {
+  background: #ff9090;
+  filter: url(#noiseFilter);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Blobs */
+.blob-cont {
+  z-index: -2;
+  height: 50vh;
+  right: 25vw;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.blob {
+  border-radius: 9999px;
+  filter: blur(30px);
+}
+
+.yellow {
+  background-color: var(--yellow);
+  position: absolute;
+  top: 25vh;
+  right: 10vw;
+  height: 18vw;
+  width: 23vw;
+  animation: yellow 8s infinite ease;
+}
+
+.green {
+  background-color: var(--green);
+  position: absolute;
+  top: 8vh;
+  right: 2vw;
+  height: 22vw;
+  width: 19vw;
+  animation: green 9s infinite ease;
+}
+
+.red {
+  background-color: var(--red);
+  position: absolute;
+  right: 0;
+  top: 30vh;
+  height: 22vw;
+  width: 18vw;
+  animation: red 8s infinite linear;
+}
+
+@keyframes yellow {
+  0% {
+    top: 20vh;
+    right: 5vw;
+    transform: scale(1);
+    rotate: 0deg;
+    opacity: 1;
   }
-  a:hover {
-    color: #747bff;
+  25% {
+    top: 30vh;
+    right: 15vw;
+    transform: scale(1.2);
+    rotate: 30deg;
+    opacity: 0.8;
   }
-  button {
-    background-color: #f9f9f9;
+  70% {
+    top: 10vh;
+    right: 20vw;
+    transform: scale(1.3);
+    rotate: 60deg;
+    opacity: 0.6;
+  }
+  100% {
+    top: 20vh;
+    right: 5vw;
+    transform: scale(1);
+    rotate: 0deg;
+    opacity: 1;
   }
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes green {
+  0% {
+    top: 8vh;
+    right: 20vw;
+    transform: scale(1.2);
+    rotate: 0deg;
+    opacity: 0.9;
+  }
+  30% {
+    top: 30vh;
+    right: 20vw;
+    transform: scale(1);
+    rotate: 30deg;
+    opacity: 1;
+  }
+  60% {
+    top: 20vh;
+    right: 10vw;
+    transform: scale(1);
+    rotate: 60deg;
+    opacity: 0.8;
+  }
+  100% {
+    top: 8vh;
+    right: 20vw;
+    transform: scale(1.2);
+    rotate: 0deg;
+    opacity: 0.9;
+  }
+}
+
+@keyframes red {
+  0% {
+    top: 25vh;
+    right: 0;
+    transform: scale(1);
+    rotate: 0deg;
+    opacity: 0.8;
+  }
+  30% {
+    top: 15vh;
+    right: 15vw;
+    transform: scale(1.4);
+    rotate: 45deg;
+    opacity: 0.6;
+  }
+  60% {
+    top: 30vh;
+    right: 10vw;
+    transform: scale(1);
+    rotate: 90deg;
+    opacity: 0.4;
+  }
+  100% {
+    top: 25vh;
+    right: 0;
+    transform: scale(1);
+    rotate: 0deg;
+    opacity: 0.8;
+  }
+}
+
+.hero {
+  background:
+    linear-gradient(to right, #151515 1px, transparent 1px) 0 0,
+    linear-gradient(to right, #151515 1px, transparent 1px) 0 100%,
+    linear-gradient(to left, #151515 1px, transparent 1px) 100% 0,
+    linear-gradient(to left, #151515 1px, transparent 1px) 100% 100%,
+    linear-gradient(to bottom, #151515 1px, transparent 1px) 0 0,
+    linear-gradient(to bottom, #151515 1px, transparent 1px) 100% 0,
+    linear-gradient(to top, #151515 1px, transparent 1px) 0 100%,
+    linear-gradient(to top, #151515 1px, transparent 1px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+}
+
+.wavy {
+  @apply underline decoration-secondary-500 decoration-wavy;
+}
+
+.hover-text {
+  @apply transition-colors duration-200 ease-in-out hover:text-secondary-400;
+}
+
+.tooltip {
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  @apply absolute whitespace-nowrap bg-surface-800 p-2 text-white;
 }

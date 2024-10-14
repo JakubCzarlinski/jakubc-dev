@@ -7,11 +7,11 @@ import (
 const Name string = "jakubc"
 
 const AssestsDir string = "./dist/assets/"
-const DisableCache bool = false
+const DisableCache bool = true
 const UseGinDefault bool = false
 const UseGzip bool = true
 const UseHttps bool = false
-const UseLiveReload bool = false
+const UseLiveReload bool = true
 
 func init() {
 	logging.MinLogLevel = logging.DEBUG

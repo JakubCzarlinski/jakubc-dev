@@ -229,7 +229,7 @@ func goFormat() error {
 }
 
 func buildGoServer() error {
-	err := runProcess(golangRootDir, "go", "build", "-tags", "sonic avx", "-ldflags=-s -w", "-o", "main.exe", "./src/main.go")
+	err := runProcess(golangRootDir, "go", "build", "-tags", "sonic avx", "-ldflags=-s -w", "-o", "../main.exe", "./src/main.go")
 	if err != nil {
 		return logging.Bubble(err, "Error building Go server")
 	}
@@ -334,7 +334,7 @@ func convertStructsToTypescript() error {
 }
 
 func viteBundle() error {
-	err := runProcess(svelteDir, "bun", "run", "--silent", "vite", "build", "--logLevel", "error")
+	err := runProcess(svelteDir, "bun", "run", "--bun", "--silent", "vite", "build", "--logLevel", "error")
 	if err != nil {
 		return logging.Bubble(err, "Error building Svelte frontend")
 	}
@@ -347,7 +347,7 @@ func serverSideRender() error {
 		return logging.Bubble(err, "Error removing queue directory")
 	}
 
-	err = runProcess(svelteDir, "bun", "run", "--logLevel=error", "./build/render/dist/main.js", "-i", libDir, "-o", svelteCompileDir)
+	err = runProcess(svelteDir, "bun", "run", "--bun", "--logLevel=error", "./build/render/dist/main.js", "-i", libDir, "-o", svelteCompileDir)
 	if err != nil {
 		return logging.Bubble(err, "Error running render process")
 	}

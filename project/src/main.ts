@@ -4,7 +4,7 @@ import { hydrate } from "svelte";
 const modules = import.meta.glob("@/project/src/lib/**/*.svelte");
 Object.keys(modules).forEach((path) => modules[path]());
 
-const targets: string[] = ["App", "Counter"];
+const targets: string[] = ["App"];
 
 for (let i = 0; i < targets.length; i++) {
   loadComponents(targets[i]);

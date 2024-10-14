@@ -3,7 +3,7 @@ module project
 go 1.23
 
 require (
-	github.com/JakubCzarlinski/go-logging v1.0.2
+	github.com/JakubCzarlinski/go-logging v1.0.3
 	github.com/JakubCzarlinski/go-pooling v1.0.0
 	github.com/a-h/templ v0.2.778
 	github.com/bytedance/sonic v1.12.3
