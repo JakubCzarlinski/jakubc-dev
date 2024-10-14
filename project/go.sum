@@ -1,11 +1,7 @@
-github.com/JakubCzarlinski/go-logging v1.0.1 h1:wM5d20SVmpOXRhyBB+MXw9gD3nu0s6X02cS2GC6Dw9A=
-github.com/JakubCzarlinski/go-logging v1.0.1/go.mod h1:0BdRS81BSashzVj+BoNEZD+AvKMGdJCK5GBIpayvaag=
-github.com/JakubCzarlinski/go-logging v1.0.2 h1:y4d+Uxea8LmlfIWAJo3rn7pakQCbPChQoAQeorH4VnE=
-github.com/JakubCzarlinski/go-logging v1.0.2/go.mod h1:0BdRS81BSashzVj+BoNEZD+AvKMGdJCK5GBIpayvaag=
-github.com/JakubCzarlinski/go-logging v1.0.3 h1:Tdf1BORM/dVnHuq55CG90XDGtcrTjp/XZiZ/PAtdHYU=
-github.com/JakubCzarlinski/go-logging v1.0.3/go.mod h1:0BdRS81BSashzVj+BoNEZD+AvKMGdJCK5GBIpayvaag=
-github.com/JakubCzarlinski/go-pooling v1.0.0 h1:1CGA7OsuzLDZq6JZmb5FaSwKz6ZvnxWgaejzUa9ftYA=
-github.com/JakubCzarlinski/go-pooling v1.0.0/go.mod h1:owUMib6XOkEG0ciBqYc9JjRc1BRZuTIlGdutoE7czZI=
+github.com/JakubCzarlinski/go-logging v1.0.4 h1:nG7gH0BcjcU5uzkHbuJwHt65gzGE5xHJVUAglgbG/xI=
+github.com/JakubCzarlinski/go-logging v1.0.4/go.mod h1:NYixyeMnwmAd9jupw9XEKFcD6+TU+xrheloL9cfmqgA=
+github.com/JakubCzarlinski/go-pooling v1.0.1 h1:jdqSTCHQ5dVtgM4TxNnqxATMwtQhEDabeK2iaPe5ScI=
+github.com/JakubCzarlinski/go-pooling v1.0.1/go.mod h1:9Eg6BwQ+2BF9bak0d7afmG8wiraGFqP4s0igMXr2Ehs=
 github.com/a-h/templ v0.2.778 h1:VzhOuvWECrwOec4790lcLlZpP4Iptt5Q4K9aFxQmtaM=
 github.com/a-h/templ v0.2.778/go.mod h1:lq48JXoUvuQrU0VThrK31yFwdRjTCnIE5bcPCM9IP1w=
 github.com/bytedance/sonic v1.12.3 h1:W2MGa7RCU1QTeYRTPE3+88mVC0yXmsRQRChiyVocVjU=
@@ -20,8 +16,8 @@ github.com/cloudwego/iasm v0.2.0/go.mod h1:8rXZaNYT2n95jn+zTI1sDr+IgcD2GVs0nlbbQ
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/gabriel-vasile/mimetype v1.4.5 h1:J7wGKdGu33ocBOhGy0z653k/lFKLFDPJMG8Gql0kxn4=
-github.com/gabriel-vasile/mimetype v1.4.5/go.mod h1:ibHel+/kbxn9x2407k1izTA1S81ku1z/DlgOW2QE0M4=
+github.com/gabriel-vasile/mimetype v1.4.6 h1:3+PzJTKLkvgjeTbts6msPJt4DixhT4YtFNf1gtGe3zc=
+github.com/gabriel-vasile/mimetype v1.4.6/go.mod h1:JX1qVKqZd40hUPpAfiNTe0Sne7hdfKSbOqqmkq8GCXc=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.10.0 h1:nTuyha1TYqgedzytsKYqna+DfLos46nTv2ygFy86HFU=

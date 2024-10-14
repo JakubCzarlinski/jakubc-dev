@@ -352,7 +352,7 @@ func serverSideRender() error {
 		return logging.Bubble(err, "Error running render process")
 	}
 
-	err = runProcess(svelteDir, "prettier", "--log-level", "error", "--write", "--single-attribute-per-line=false", "--bracket-same-line=true", svelteCompileDir+"**/*.html")
+	err = runProcess(svelteDir, "bun", "run", "prettier", "--log-level", "error", "--write", "--single-attribute-per-line=false", "--bracket-same-line=true", svelteCompileDir+"**/*.html")
 	if err != nil {
 		return logging.Bubble(err, "Error running prettier")
 	}

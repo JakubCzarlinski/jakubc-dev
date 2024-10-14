@@ -1,9 +1,9 @@
 github.com/JakubCzarlinski/go-add-omit-empty v1.0.0 h1:4iZzHpSJh44M+/KwwOoiTThTmGD227xPYPHeNJHCu4c=
 github.com/JakubCzarlinski/go-add-omit-empty v1.0.0/go.mod h1:lMzfg0Bqf0J49HzRPAn/yaumnc05NFWRtzCT+0id5XU=
-github.com/JakubCzarlinski/go-logging v1.0.2 h1:y4d+Uxea8LmlfIWAJo3rn7pakQCbPChQoAQeorH4VnE=
-github.com/JakubCzarlinski/go-logging v1.0.2/go.mod h1:0BdRS81BSashzVj+BoNEZD+AvKMGdJCK5GBIpayvaag=
-github.com/JakubCzarlinski/go-pooling v1.0.0 h1:1CGA7OsuzLDZq6JZmb5FaSwKz6ZvnxWgaejzUa9ftYA=
-github.com/JakubCzarlinski/go-pooling v1.0.0/go.mod h1:owUMib6XOkEG0ciBqYc9JjRc1BRZuTIlGdutoE7czZI=
+github.com/JakubCzarlinski/go-logging v1.0.4 h1:nG7gH0BcjcU5uzkHbuJwHt65gzGE5xHJVUAglgbG/xI=
+github.com/JakubCzarlinski/go-logging v1.0.4/go.mod h1:NYixyeMnwmAd9jupw9XEKFcD6+TU+xrheloL9cfmqgA=
+github.com/JakubCzarlinski/go-pooling v1.0.1 h1:jdqSTCHQ5dVtgM4TxNnqxATMwtQhEDabeK2iaPe5ScI=
+github.com/JakubCzarlinski/go-pooling v1.0.1/go.mod h1:9Eg6BwQ+2BF9bak0d7afmG8wiraGFqP4s0igMXr2Ehs=
 github.com/JakubCzarlinski/go-struct-to-ts v1.0.0 h1:gy3MeFAcBiYYpYm4BowGIYkge+KPH7IosjUCeoL++90=
 github.com/JakubCzarlinski/go-struct-to-ts v1.0.0/go.mod h1:KpwX17osLQiFbZYOZczdyuk0E/1zYdZlvZ9TfXZrCkQ=
 github.com/fatih/structtag v1.2.0 h1:/OdNE99OxoI/PqaW/SuSK9uxxT3f/tcSZgon/ssNSx4=
