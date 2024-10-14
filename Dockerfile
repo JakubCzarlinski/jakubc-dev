@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y curl unzip
 
 # Install Bun
 RUN curl -fsSL https://bun.sh/install | bash
+RUN go install github.com/a-h/templ/cmd/templ@latest
 
 # Add Bun to PATH
 ENV PATH="/root/.bun/bin:${PATH}"
@@ -29,7 +30,6 @@ RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --qui
 RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
 
 # Build the Go app
-RUN go install github.com/a-h/templ/cmd/templ@latest
 RUN bun install
 RUN go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
 RUN go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
