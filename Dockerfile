@@ -19,18 +19,23 @@ WORKDIR /app
 COPY . .
 
 # Change directory to /app
-RUN cd /app
+RUN if [ ! -d "./build/render" ]; then \
+  git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet; \
+  fi
 
-RUN rm -rf ./build/render
-RUN rm -rf ./build/render_to_templ
+RUN if [ ! -d "./build/render_to_templ" ]; then \
+  git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet; \
+  fi
 
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
+WORKDIR /app/project
+RUN --mount=type=cache,target="/go/pkg/mod" go mod download
+WORKDIR /app
+
 
 # Build the Go app
 RUN bun install
-RUN go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
+RUN --mount=type=cache,target="/root/.cache/go-build" go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
+RUN --mount=type=cache,target="/root/.cache/go-build" go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 RUN ./build/builder/build.exe
 
 
