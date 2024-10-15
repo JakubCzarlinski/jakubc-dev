@@ -20,14 +20,8 @@ COPY . .
 
 RUN cd /app
 
-# Change directory to /app
-RUN if [ ! -d "./build/render" ]; then \
-  git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet; \
-  fi
+RUN git submodule update --init
 
-RUN if [ ! -d "./build/render_to_templ" ]; then \
-  git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet; \
-  fi
 
 WORKDIR /app/build/render_to_templ
 RUN cd /app/build/render_to_templ
