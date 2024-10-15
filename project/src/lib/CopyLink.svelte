@@ -23,7 +23,7 @@
   onclick={() => copyLink(link)}
   aria-label="Copy link"
 >
-  <div class="inline {className}">#</div>
+  <div class="inline m-4 {className}">#</div>
   {#if copied}
     <span class="tooltip">Copied link</span>
   {/if}
