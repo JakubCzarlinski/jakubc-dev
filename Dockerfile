@@ -14,6 +14,10 @@ ENV PATH="/root/.bun/bin:${PATH}"
 ENV OS="linux"
 ENV PROD="true"
 
+ARG RAILWAY_SERVICE_ID=default
+ENV RAILWAY_SERVICE_ID=${RAILWAY_SERVICE_ID}
+
+
 WORKDIR /app
 
 COPY . .
@@ -27,15 +31,19 @@ RUN if [ ! -d "./build/render_to_templ" ]; then \
   git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet; \
   fi
 
+WORKDIR /app/build/render_to_templ
+RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
+WORKDIR /app
+
 WORKDIR /app/project
-RUN --mount=type=cache,target="/go/pkg/mod" go mod download
+RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
 WORKDIR /app
 
 
 # Build the Go app
 RUN bun install
-RUN --mount=type=cache,target="/root/.cache/go-build" go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN --mount=type=cache,target="/root/.cache/go-build" go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
+RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
+RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 RUN ./build/builder/build.exe
 
 
