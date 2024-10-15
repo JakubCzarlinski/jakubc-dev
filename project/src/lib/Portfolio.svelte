@@ -33,7 +33,9 @@
 <Project
   id="dissertaion"
   title="Diffusion Based Multi-Speaker TTS Synthesis"
-  description=""
+  description="Third year dissertation project. Applying diffusion models to
+generate speech from multiple speakers. Approach was similar to NaturalSpeech2,
+but instead we used speaker embeddings to condition the model."
   image="https://cataas.com/cat"
 />
 

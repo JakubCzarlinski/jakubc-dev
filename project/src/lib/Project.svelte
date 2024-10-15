@@ -33,7 +33,7 @@
 
 <div class="block mb-8"></div>
 
-<div class="grid grid-cols-2 gap-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 place-items-center">
   <div class="flex aspect-square max-h-[300px] overflow-clip">
     <img
       class="aspect-square w-full place-self-center object-cover"
@@ -42,7 +42,7 @@
     />
   </div>
 
-  <p class="lowercase">
+  <p class="lowercase text-justify">
     {description}
   </p>
 </div>
