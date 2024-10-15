@@ -22,6 +22,9 @@ RUN cd /app
 
 RUN rm -rf ./build/render
 RUN rm -rf ./build/render_to_templ
+RUN rm -rf ./dist/
+RUN rm -rf ./compile/
+RUN rm -rf ./project/gen/
 
 RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet
 RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
@@ -43,6 +46,8 @@ RUN go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/ma
 RUN go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 RUN ./build/builder/build.exe
 
+RUN rm -rf ./build/
+RUN rm -rf ./node_modules/
 
 EXPOSE 3000
 
