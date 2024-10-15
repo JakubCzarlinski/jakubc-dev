@@ -14,10 +14,6 @@ ENV PATH="/root/.bun/bin:${PATH}"
 ENV OS="linux"
 ENV PROD="true"
 
-ARG RAILWAY_SERVICE_ID=badf54cc-2591-47a9-ab02-a6ae31b12aa9
-ENV RAILWAY_SERVICE_ID=${RAILWAY_SERVICE_ID}
-
-
 WORKDIR /app
 
 COPY . .
