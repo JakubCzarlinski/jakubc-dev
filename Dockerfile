@@ -32,18 +32,18 @@ RUN if [ ! -d "./build/render_to_templ" ]; then \
   fi
 
 WORKDIR /app/build/render_to_templ
-RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
+RUN --mount=type=cache,id=s/"${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
 WORKDIR /app
 
 WORKDIR /app/project
-RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
+RUN --mount=type=cache,id=s/"${RAILWAY_SERVICE_ID}-/go/pkg/mod",target=/go/pkg/mod go mod download
 WORKDIR /app
 
 
 # Build the Go app
 RUN bun install
-RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN --mount=type=cache,id="${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
+RUN --mount=type=cache,id=s/"${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
+RUN --mount=type=cache,id=s/"${RAILWAY_SERVICE_ID}-/root/.cache/go-build",target="/root/.cache/go-build" go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 RUN ./build/builder/build.exe
 
 
