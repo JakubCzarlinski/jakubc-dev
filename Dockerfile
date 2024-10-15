@@ -13,6 +13,7 @@ RUN go install github.com/a-h/templ/cmd/templ@latest
 ENV PATH="/root/.bun/bin:${PATH}"
 ENV OS="linux"
 ENV PROD="true"
+ENV NO_CACHE=1
 
 WORKDIR /app
 
