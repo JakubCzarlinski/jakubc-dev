@@ -47,5 +47,7 @@ go.work.sum
 
 /compile
 /project/gen/
+/build/render_to_templ
+/build/render
 
 *_templ.go
