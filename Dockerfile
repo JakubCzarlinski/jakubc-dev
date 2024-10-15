@@ -20,17 +20,20 @@ COPY . .
 
 RUN cd /app
 
-RUN git submodule update --init
+RUN rm -rf ./build/render
+RUN rm -rf ./build/render_to_templ
 
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
 
 WORKDIR /app/build/render_to_templ
 RUN cd /app/build/render_to_templ
 RUN go mod download
-WORKDIR /app
 
 WORKDIR /app/project
 RUN cd /app/project
 RUN go mod download
+RUN cd /app
 WORKDIR /app
 
 
