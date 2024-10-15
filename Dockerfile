@@ -27,10 +27,6 @@ RUN if [ ! -d "./build/render_to_templ" ]; then \
   git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet; \
   fi
 
-WORKDIR /app/build/render_to_templ
-RUN go mod download
-WORKDIR /app
-
 WORKDIR /app/project
 RUN go mod download
 WORKDIR /app
