@@ -1,5 +1,7 @@
 <script lang="ts">
   import CopyLink from "@/project/src/lib/CopyLink.svelte";
+  import Project from "@/project/src/lib/Project.svelte";
+  import Top from "@/project/src/lib/Top.svelte";
 </script>
 
 <CopyLink link="https://jakubc.dev/#portfolio" />
@@ -16,3 +18,45 @@
     GitHub profile
   </a>.
 </p>
+
+<div class="h-[10vh]"></div>
+
+<Project
+  id="google"
+  title="Google Internships"
+  description=""
+  image="https://cataas.com/cat"
+/>
+
+<Top />
+
+<Project
+  id="dissertaion"
+  title="Diffusion Based Multi-Speaker TTS Synthesis"
+  description=""
+  image="https://cataas.com/cat"
+/>
+
+<Top />
+
+<Project
+  id="framework"
+  title="Go-Svelte Framework"
+  description="A blazingly
+fast full-stack framework that Server-Side-Renders Svelte components into Go
+templates - at compile time! We get full expresivity of Svelte, and the speed of
+Go. It's a match made in heaven. How fast does it build? Minimal build time is
+0.6s for a full-stack app. How fast does it run? Whilst using less RAM than notepad.exe"
+  image="https://cataas.com/cat"
+/>
+
+<Top />
+
+<Project
+  id="github"
+  title="GitHub"
+  link="https://www.github.com/JakubCzarlinski/"
+  description="Collection of my
+personal projects, open source contribution, and a showcase of my skillsets."
+  image="https://cataas.com/cat"
+/>

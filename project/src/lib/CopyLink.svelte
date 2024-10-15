@@ -1,5 +1,11 @@
 <script lang="ts">
-  let { link }: { link: string } = $props();
+  let {
+    link,
+    className = "h1",
+   }: {
+    link: string;
+    className?: string;
+   } = $props();
   let copied = $state(false);
 
   const copyLink = (link: string) => {
@@ -13,11 +19,11 @@
 </script>
 
 <button
-  class="hover-text text-token inline w-fit text-center font-semibold relative"
+  class="hover-text text-token relative inline w-fit text-center font-semibold"
   onclick={() => copyLink(link)}
   aria-label="Copy link"
 >
-  <h1 class="inline">#</h1>
+  <div class="inline {className}">#</div>
   {#if copied}
     <span class="tooltip">Copied link</span>
   {/if}
