@@ -14,54 +14,40 @@ ENV OS="linux"
 ENV PROD="true"
 
 RUN apk update
-RUN apk add tar
 RUN apk add git
 
 RUN go install github.com/a-h/templ/cmd/templ@latest
 RUN go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 
-# Add Bun to PATH
-# ENV PATH="/root/.bun/bin:${PATH}"
-# Alias bun to npm
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr /app/build/render --quiet
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ /app/build/render_to_templ --quiet
+RUN go -C /app/build/render_to_templ/ mod download
 
 WORKDIR /app
-
-COPY . .
-
-RUN cd /app
-
-RUN rm -rf ./build/render
-RUN rm -rf ./build/render_to_templ
-
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr ./build/render --quiet
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ ./build/render_to_templ --quiet
-
-WORKDIR /app/build/render_to_templ
-RUN cd /app/build/render_to_templ
-RUN go mod download
-
-WORKDIR /app/project
-RUN cd /app/project
-RUN go mod download
-
-WORKDIR /app/build/builder
-RUN cd /app/build/builder
-RUN go mod download
-RUN cd /app
-
-WORKDIR /app
+COPY package.json /app/package.json
 RUN bun install
-RUN go -C ./build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN go -C ./build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
-RUN ./build/builder/build.exe
 
+COPY ./project/go.mod /app/project/go.mod
+COPY ./project/go.sum /app/project/go.sum
+RUN go -C /app/project mod download
+
+COPY ./build/builder/go.mod /app/build/builder/go.mod
+COPY ./build/builder/go.sum /app/build/builder/go.sum
+RUN go -C /app/build/builder mod download
+
+COPY . /app
+
+RUN go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
+RUN go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
+RUN /app/build/builder/build.exe
 
 
 FROM alpine:latest
 
 WORKDIR /app
 
-COPY --from=builder /app/ .
+COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/main.exe /app/main.exe
 
 EXPOSE 3000
 
