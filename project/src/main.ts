@@ -2,27 +2,30 @@ import "@/project/src/app.css";
 import { hydrate } from "svelte";
 
 const modules = import.meta.glob("@/project/src/lib/**/*.svelte");
-Object.keys(modules).forEach((path) => modules[path]());
-
-const targets: string[] = ["App"];
-
-for (let i = 0; i < targets.length; i++) {
-  loadComponents(targets[i]);
+function getComponentName(path: string) {
+  return path.slice(path.lastIndexOf("/") + 1, -".svelte".length);
 }
 
-async function loadComponents(className: string) {
-  const elem = document.getElementsByClassName(className);
-  if (elem.length === 0) return;
-  const component = (await import(`/assets/${elem[0].className}.js`)).default;
-  for (let i = 0; i < elem.length; i++) {
-    mountComponent(elem[i], component);
-  }
+for (const path in modules) {
+  const elem = document.getElementsByClassName(getComponentName(path));
+  const length = elem.length;
+  if (length === 0) continue;
+
+  modules[path]().then((result) => {
+    for (let i = 0; i < length; i++) {
+      mountComponent(elem[i], (result as { default: any }).default);
+    }
+  });
 }
 
 async function mountComponent(element: Element, Component: any) {
+  if (element.firstElementChild === null) return;
+  const attr = element.getAttribute("svelte");
+  if (attr === null) return;
+
   hydrate(Component, {
-    target: element.firstElementChild as Element,
-    props: JSON.parse(element.getAttribute("svelte") as string),
+    target: element.firstElementChild,
+    props: JSON.parse(attr),
   });
   element.replaceChildren(...element.children[0].children);
   element.removeAttribute("svelte");
