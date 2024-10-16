@@ -13,7 +13,7 @@
 <div class="h-[20vh]"></div>
 
 <div class="grid grid-cols-1 place-items-center px-4">
-  <div class="w-full md:w-[60%]">
+  <div class="w-full sm:w-[80%] md:w-[70%]">
     <div id="portfolio">
       <Portfolio /><Top />
     </div>
