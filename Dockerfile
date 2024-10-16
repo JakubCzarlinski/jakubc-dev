@@ -49,6 +49,9 @@ WORKDIR /app
 COPY --from=builder /app/dist /app/dist
 COPY --from=builder /app/main.exe /app/main.exe
 
+ENV OS="linux"
+ENV PROD="true"
+
 EXPOSE 3000
 
 ENTRYPOINT [ "./main.exe" ]
