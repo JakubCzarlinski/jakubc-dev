@@ -1,60 +1,82 @@
 <script lang="ts">
+  import Accordion from "@/project/src/lib/Accordion.svelte";
   import CopyLink from "@/project/src/lib/CopyLink.svelte";
-  import { onMount } from "svelte";
+  import Top from "@/project/src/lib/Top.svelte";
+  import { onMount, type Snippet } from "svelte";
   let {
     id = "",
     title = "",
-    description = "",
     link = "",
     image = "",
     imageSide = "left",
+    initialOpen = false,
+    description,
+    chips,
+    bottonSnippet,
   }: {
     id?: string;
     title?: string;
-    description?: string;
     link?: string;
     image?: string;
     imageSide?: "left" | "right";
+    initialOpen?: boolean;
+    description?: Snippet | string;
+    chips?: Snippet;
+    bottonSnippet?: Snippet;
   } = $props();
 
   let currentDomain = $state("");
   onMount(() => {
     currentDomain = window.location.origin ?? "https://jakubc.dev";
   });
+
+  const gridDirection = imageSide === "left" ? "order-last" : "order-first";
 </script>
 
-<CopyLink className={"h2"} link="{currentDomain}#{id}" />
+<svelte:head>
+  <link rel="image" href={image} />
+</svelte:head>
 
-<h2 class="wavy inline underline-offset-[12px] leading-loose">
-  {#if link}
-    <a href={link} target="_blank">{title}</a>
-  {:else}
-    {title}
-  {/if}
-</h2>
+<Accordion {initialOpen}>
+  {#snippet head()}
+    <div>
+      <CopyLink className={"h2"} link="{currentDomain}#{id}" />
+      <h2 class="wavy inline underline-offset-[12px] leading-loose">
+        {#if link}
+          <a href={link} target="_blank">{title}</a>
+        {:else}
+          {title}
+        {/if}
+      </h2>
+    </div>
+  {/snippet}
 
-<div class="block mb-8"></div>
+  {#snippet details()}
+    {@render chips?.()}
+    <div class="block mb-8"></div>
 
-{#snippet desc(text: string)}
-  <p class="text-justify align-text-top place-self-start leading-loose">
-    {text}
-  </p>
-{/snippet}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 place-items-center">
+      <div class="flex aspect-square min-h-[300px] max-h-[300px] overflow-clip {gridDirection}">
+        <img
+          class="aspect-square w-full place-self-center object-cover"
+          src={image}
+          alt={title}
+        />
+      </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-2 place-items-center">
-  {#if imageSide === "right"}
-    {@render desc(description)}
-  {/if}
+      <p class="text-justify align-text-top place-self-start leading-loose">
+        {#if typeof description === 'function'}
+          {@render description()}
+        {:else}
+          {description}
+        {/if}
+      </p>
+    </div>
 
-  <div class="flex aspect-square max-h-[300px] overflow-clip">
-    <img
-      class="aspect-square w-full place-self-center object-cover"
-      src={image}
-      alt={title}
-    />
-  </div>
+    <div class="mt-4 grid grid-cols-1 place-items-center">
+      {@render bottonSnippet?.()}
+    </div>
 
-  {#if imageSide === "left"}
-    {@render desc(description)}
-  {/if}
-</div>
+    <Top />
+  {/snippet}
+</Accordion>

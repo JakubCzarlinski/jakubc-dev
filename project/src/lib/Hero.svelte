@@ -80,7 +80,7 @@
 
 <h1 class="h-0">jakubc.dev</h1>
 <div
-  class="hero flex h-[80vh] w-[85%] flex-row items-center justify-between p-4"
+  class="hero flex h-[80svh] w-[85%] flex-row items-center justify-between p-4"
 >
   <div class="mx-2 mb-2 mt-auto md:mb-24 md:ml-24">
     <h1 class="w-fit text-nowrap bg-surface-500 text-4xl">Jakub Czarliński</h1>
