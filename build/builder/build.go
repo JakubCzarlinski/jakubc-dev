@@ -195,7 +195,15 @@ func runBuild(buildStep []func() error) {
 }
 
 func renderToTempl() error {
-	err := runProcess(".", renderToTemplDir+"main.exe", "-in", svelteCompileDir, "-out", genDir)
+	output, err := exec.Command("git", "rev-parse", "HEAD").Output()
+	if err != nil {
+		return logging.Bubble(err, "Error running git command")
+	}
+	gitHash := strings.Trim(string(output), "\n")
+	if gitHash == "" {
+		return logging.Bubble(err, "Error getting git hash")
+	}
+	err = runProcess(".", renderToTemplDir+"main.exe", "-in", svelteCompileDir, "-out", genDir, "-gitHash", gitHash)
 	if err != nil {
 		return logging.Bubble(err, "Error running frontend builder")
 	}

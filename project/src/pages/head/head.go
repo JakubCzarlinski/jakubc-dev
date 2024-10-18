@@ -25,29 +25,30 @@ var bufferPool = pooling.CreateBytesBufferPool(1024 * 12)
 func init() {
 	var ex, _ = os.Executable()
 	var exPath = filepath.Dir(ex)
+	file, err := os.Open(path.Join(exPath, flags.DistDir+"index.html"))
+	if err != nil {
+		logging.FatalBubble(err, "Error reading file")
+	}
+	defer file.Close()
+	// Read the file into indexScripts
+	headTags := &strings.Builder{}
+	_, err = io.Copy(headTags, file)
+	if err != nil {
+		logging.FatalBubble(err, "Error reading file")
+	}
+	indexScripts = headTags.String()
+
 	files, err := os.ReadDir(path.Join(exPath, flags.AssestsDir))
 	if err != nil {
-		panic(logging.Bubble(err, "Error reading directory"))
+		logging.FatalBubble(err, "Error reading directory")
 	}
 
-	var scripts strings.Builder
 	for _, file := range files {
 		filename := file.Name()
-
 		if strings.HasSuffix(filename, ".css") {
 			stylesheets[filename[:len(filename)-4]] = fmt.Sprintf(`<link rel="stylesheet" href="/assets/%s"/>`, filename)
 		}
-		if !strings.HasPrefix(filename, "index") {
-			continue
-		}
-		if strings.HasSuffix(filename, ".js") {
-			if filename == "index.js" {
-				continue
-			}
-			scripts.WriteString(`<link rel="modulepreload" as="script" href="/assets/` + filename + `"/>`)
-		}
 	}
-	indexScripts = scripts.String()
 }
 
 func DefaultPageRender(
@@ -110,7 +111,7 @@ func createHeadContents(headContents map[string]struct{}) templ.Component {
 			if indexHref == -1 {
 				continue
 			}
-			remaining := key[indexHref+14:]
+			remaining := key[indexHref+14:] // 14 is the length of `href="/assets/`
 			jsIndex := strings.Index(remaining, `.js"`)
 			if jsIndex == -1 {
 				continue

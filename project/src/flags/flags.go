@@ -9,6 +9,7 @@ import (
 const Name string = "jakubc"
 
 const (
+	DistDir       string = "./dist/"
 	AssestsDir    string = "./dist/assets/"
 	UseGinDefault bool   = false
 	UseHttps      bool   = false
