@@ -4,8 +4,8 @@ export const theme: CustomThemeConfig = {
   name: "custom",
   properties: {
     // =~= Theme Properties =~=
-    "--theme-font-family-base": `system-ui`,
-    "--theme-font-family-heading": `Recoleta`,
+    "--theme-font-family-base": `Open Sans,Arial,sans-serif,system-ui`,
+    "--theme-font-family-heading": `Recoleta,serif`,
     "--theme-font-color-base": "14 14 14",
     "--theme-font-color-dark": "255 255 255",
     "--theme-rounded-base": "9999px",

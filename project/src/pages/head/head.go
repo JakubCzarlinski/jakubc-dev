@@ -37,6 +37,7 @@ func init() {
 		logging.FatalBubble(err, "Error reading file")
 	}
 	indexScripts = headTags.String()
+	indexScripts = strings.ReplaceAll(indexScripts, "\n", "")
 
 	files, err := os.ReadDir(path.Join(exPath, flags.AssestsDir))
 	if err != nil {

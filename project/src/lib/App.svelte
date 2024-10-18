@@ -13,15 +13,17 @@
 
 <div class="grid grid-cols-1 place-items-center px-4">
   <div class="w-full sm:w-[80%] md:w-[70%]">
-    <div class="italic h-[5svh]">
-      Hey~
-    </div>
-    <div class="italic font-bold h-[5svh]">
-      Nice to see you here so early! This page is still under construction, but
-      feel free to look around.
-    </div>
-    <div class="italic h-[5svh]">
-      - Jakub
+    <div class="h-[10svh] min-h-fit grid grid-cols-1 gap-4 mb-8 italic">
+      <div>
+        Hey~
+      </div>
+      <div class="font-bold">
+        Nice to see you here so early! This page is still under construction, but
+        feel free to look around.
+      </div>
+      <div>
+        - Jakub
+      </div>
     </div>
 
     <div id="portfolio">
