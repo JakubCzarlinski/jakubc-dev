@@ -6,8 +6,8 @@
   let {
     id = "",
     title = "",
-    link = "",
     image = "",
+    imageCaption = "",
     imageSide = "left",
     initialOpen = false,
     description,
@@ -16,8 +16,8 @@
   }: {
     id?: string;
     title?: string;
-    link?: string;
     image?: string;
+    imageCaption?: string;
     imageSide?: "left" | "right";
     initialOpen?: boolean;
     description?: Snippet | string;
@@ -45,11 +45,7 @@
     <div>
       <CopyLink className={"h2"} link="{currentDomain}#{id}" />
       <h2 class="wavy inline underline-offset-[12px] leading-loose">
-        {#if link}
-          <a href={link} target="_blank">{title}</a>
-        {:else}
-          {title}
-        {/if}
+        {title}
       </h2>
     </div>
   {/snippet}
@@ -59,14 +55,19 @@
     <div class="block mb-8"></div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 place-items-center">
-      <div
-        class="flex aspect-square min-h-[300px] max-h-[300px] overflow-clip {gridDirection}"
-      >
-        <img
-          class="aspect-square w-full place-self-center object-cover"
-          src={image}
-          alt={title}
-        />
+      <div class="grid grid-cols-1 place-items-center {gridDirection}">
+        <div
+          class="flex aspect-square min-h-[300px] max-h-[300px] overflow-clip"
+        >
+          <img
+            class="aspect-square w-full place-self-center object-cover"
+            src={image}
+            alt={title}
+          />
+        </div>
+        <h3 class="text-justify italic">
+          {imageCaption}
+        </h3>
       </div>
 
       <p class="text-justify align-text-top place-self-start leading-loose">

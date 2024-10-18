@@ -5,7 +5,7 @@
 <CopyLink link="https://jakubc.dev/#blog" />
 <h1 class="inline-block wavy mb-12 underline-offset-[12px]">Blog</h1>
 
-<p class="lowercase">
+<p>
   Blog coming soon. In the meantime, check out my
   <a
     class="wavy hover-text text-token"

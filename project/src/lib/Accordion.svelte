@@ -27,7 +27,7 @@
     href="javascript:void(0)"
   >
     {@render head?.()}
-    <div class="mr-4">V</div>
+    <div class="mr-4 font-extrabold">V</div>
   </a>
   {#if open}
     <div
