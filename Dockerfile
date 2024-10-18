@@ -25,6 +25,7 @@ RUN go -C /app/build/render_to_templ/ mod download
 
 WORKDIR /app
 COPY package.json /app/package.json
+COPY ./.git /app/.git
 RUN bun install
 
 COPY ./project/go.mod /app/project/go.mod
