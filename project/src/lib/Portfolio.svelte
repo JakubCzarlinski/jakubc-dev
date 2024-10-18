@@ -7,17 +7,6 @@
 
 <h1 class="wavy mb-12 inline-block underline-offset-[12px]">Portfolio</h1>
 
-<p class="mb-4">
-  Portfolio here is work in progress. For more projects and contributions, check
-  <a
-    class="wavy hover-text text-token"
-    href="https://github.com/JakubCzarlinski/"
-    target="_blank"
-  >
-    GitHub profile
-  </a>.
-</p>
-
 <hr class="!border-t-2" />
 
 <Project
@@ -94,7 +83,7 @@ scalable, and visually appealing web applications."
       <p class="indent-4 pl:8 md:pl-16">
         Minimal build time for a full-stack app is just
         <span class="wavy">0.6 seconds.</span>
-        Running this website inside an Alpine Docker container, the frame work handles
+        Running this website inside an Alpine Docker container, the framework handles
         over <span class="wavy">400K requests per second.</span>
         For comparison, the `<code>hello world</code>` example for the Bun
         server can handle about 100k requests per second in the same
@@ -224,10 +213,10 @@ model with speaker embeddings rather than whole sections of audio."
   id="github"
   title="GitHub"
   description="Collection of many of my personal
-projects, open source contribution, and a showcase of my skillsets. Contains a
+projects, open-source contribution, and a showcase of my skillsets. Contains a
 variety of projects, from full-stack web applications, to machine learning
 research projects, to small utility scripts. It's a great place to see what I've
-been up to. Whenver I have a new idea, I try to make it a reality and share it
+been up to. Whenever I have a new idea, I try to make it a reality and share it
 with the world."
   image="https://raw.githubusercontent.com/JakubCzarlinski/jakubc-dev/refs/heads/main/public/luna.svg"
   imageCaption="Luna; a very friendly and free-spirited cat."
