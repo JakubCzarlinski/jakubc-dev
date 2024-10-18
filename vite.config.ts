@@ -1,3 +1,5 @@
+"use strict";
+
 import purgecss from "@fullhuman/postcss-purgecss";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import autoprefixer from "autoprefixer";
@@ -8,12 +10,12 @@ import { resolve } from "./require.ts";
 import config from "./tailwind.config.ts";
 
 // Get current git hash.
-
-const gitHash = await new Promise<string>((resolve, reject) => {
-  exec("git rev-parse HEAD", (error, stdout, stderr) => {
+const gitHash = await new Promise<string>((resolve) => {
+  exec("git rev-parse HEAD", (error, stdout, _stderr) => {
     if (error) {
-      reject("Error getting git hash, " + error.message);
-      return;
+      // Crash the build if git hash is not available.
+      console.error("Failed to get git hash:", error);
+      process.exit(1);
     }
     resolve(stdout.trim());
   });
