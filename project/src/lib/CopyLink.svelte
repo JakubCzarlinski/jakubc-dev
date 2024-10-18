@@ -2,10 +2,10 @@
   let {
     link,
     className = "h1",
-   }: {
+  }: {
     link: string;
     className?: string;
-   } = $props();
+  } = $props();
   let copied = $state(false);
 
   const copyLink = (link: string) => {
