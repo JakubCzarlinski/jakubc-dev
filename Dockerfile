@@ -19,8 +19,8 @@ RUN apk add git
 RUN go install github.com/a-h/templ/cmd/templ@latest
 RUN go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr /app/build/render --quiet
-RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ /app/build/render_to_templ --quiet
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr /app/build/render
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ /app/build/render_to_templ
 RUN go -C /app/build/render_to_templ/ mod download
 
 WORKDIR /app
