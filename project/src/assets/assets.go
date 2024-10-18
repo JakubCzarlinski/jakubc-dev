@@ -59,7 +59,7 @@ func HostStaticFiles(router *gin.Engine) error {
 				c.Writer.Header().Set("Pragma", "no-cache")
 				c.Writer.Header().Set("Expires", "0")
 			} else {
-				c.Writer.Header().Set("Cache-Control", "public, max-age=86400")
+				c.Writer.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
 			}
 			c.Writer.Write(compressed)
 		})
