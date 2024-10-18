@@ -2,7 +2,7 @@
 
 FROM golang:1.23.2-alpine AS golang
 
-FROM oven/bun:alpine AS builder
+FROM oven/bun:1.1.30-alpine AS builder
 
 COPY --from=golang /usr/local/go/ /usr/local/go/
 ENV GOPATH=/go
