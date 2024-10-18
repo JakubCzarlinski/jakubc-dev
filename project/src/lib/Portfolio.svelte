@@ -30,7 +30,7 @@ speed of Go, creating an ideal synergy. This single binary is designed to
 minimize memory footprint while preserving the rapid development experience of
 the JavaScript ecosystem. It's a dream come true for developers building fast,
 scalable, and visually appealing web applications."
-  image="https://cataas.com/cat"
+  image="https://raw.githubusercontent.com/JakubCzarlinski/jakubc-dev/refs/heads/main/public/ginger.svg"
   initialOpen
 >
   {#snippet chips()}
@@ -107,7 +107,8 @@ scalable, and visually appealing web applications."
   id="google"
   title="Google Internships"
   description="2022 STEP Internship in London, with a return offer for 2023 SWE Internship."
-  image="https://cataas.com/cat"
+  image="https://raw.githubusercontent.com/JakubCzarlinski/jakubc-dev/refs/heads/main/public/caesar_laying.svg"
+  imageSide="right"
 />
 
 <Project
@@ -117,8 +118,7 @@ scalable, and visually appealing web applications."
 models to generate speech from multiple speakers. Inspired by the NaturalSpeech2
 framework, but innovated by conditioning the model with speaker embeddings for
 more accurate and diverse speech generation"
-  image="https://cataas.com/cat"
-  imageSide="right"
+  image="https://raw.githubusercontent.com/JakubCzarlinski/jakubc-dev/refs/heads/main/public/black_cat.svg"
 />
 
 <Project
@@ -127,6 +127,19 @@ more accurate and diverse speech generation"
   link="https://www.github.com/JakubCzarlinski/"
   description="Collection of my
 personal projects, open source contribution, and a showcase of my skillsets."
-  image="https://cataas.com/cat"
+  image="https://raw.githubusercontent.com/JakubCzarlinski/jakubc-dev/refs/heads/main/public/luna.svg"
   imageSide="right"
-/>
+>
+  {#snippet bottonSnippet()}
+    <div class="text-justify leading-loose space-y-4">
+      Link to my GitHub profile:
+      <a
+        class="wavy hover-text text-token"
+        href="https://www.github.com/JakubCzarlinski/"
+        target="_blank"
+      >
+        https://www.github.com/JakubCzarlinski/
+      </a>
+    </div>
+  {/snippet}
+</Project>
