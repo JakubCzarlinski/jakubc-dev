@@ -200,7 +200,7 @@ body::before {
 }
 
 .hover-text {
-  @apply transition-colors duration-200 ease-in-out hover:text-secondary-400;
+  @apply transition-colors duration-200 ease-expo hover:text-secondary-400;
 }
 
 .tooltip {
