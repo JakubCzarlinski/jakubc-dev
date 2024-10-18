@@ -27,7 +27,10 @@
 
   let currentDomain = $state("");
   onMount(() => {
-    currentDomain = window.location.origin ?? "https://jakubc.dev";
+    currentDomain = window.location.origin ?? "https://jakubc.dev/";
+    if (!currentDomain.endsWith("/")) {
+      currentDomain += "/";
+    }
   });
 
   const gridDirection = imageSide === "left" ? "order-last" : "order-first";
@@ -56,7 +59,9 @@
     <div class="block mb-8"></div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 place-items-center">
-      <div class="flex aspect-square min-h-[300px] max-h-[300px] overflow-clip {gridDirection}">
+      <div
+        class="flex aspect-square min-h-[300px] max-h-[300px] overflow-clip {gridDirection}"
+      >
         <img
           class="aspect-square w-full place-self-center object-cover"
           src={image}
@@ -65,7 +70,7 @@
       </div>
 
       <p class="text-justify align-text-top place-self-start leading-loose">
-        {#if typeof description === 'function'}
+        {#if typeof description === "function"}
           {@render description()}
         {:else}
           {description}
