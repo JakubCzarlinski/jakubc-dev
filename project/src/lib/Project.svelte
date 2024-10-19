@@ -4,7 +4,7 @@
   import Top from "@/project/src/lib/Top.svelte";
   import { type Snippet } from "svelte";
   let {
-    id = "",
+    id,
     title = "",
     image = "",
     imageCaption = "",
@@ -14,7 +14,7 @@
     chips,
     bottonSnippet,
   }: {
-    id?: string;
+    id: string;
     title?: string;
     image?: string;
     imageCaption?: string;
