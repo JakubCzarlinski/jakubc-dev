@@ -30,3 +30,14 @@ async function mountComponent(element: Element, Component: any) {
   element.replaceChildren(...element.children[0].children);
   element.removeAttribute("svelte");
 }
+
+// Onpage load event
+window.addEventListener("load", () => {
+  const hash = window.location.hash;
+  setTimeout(() => {
+    if (hash !== "") {
+      const element = document.getElementById(hash.slice(1));
+      if (element !== null) element.scrollIntoView();
+    }
+  });
+});

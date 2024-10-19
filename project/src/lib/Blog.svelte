@@ -2,7 +2,7 @@
   import CopyLink from "@/project/src/lib/CopyLink.svelte";
 </script>
 
-<CopyLink link="https://jakubc.dev/#blog" />
+<CopyLink link="#blog" />
 <h1 class="inline-block wavy mb-12 underline-offset-[12px]">Blog</h1>
 
 <p>

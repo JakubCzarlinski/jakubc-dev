@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let {
     link,
     className = "h1",
@@ -15,7 +17,12 @@
         copied = false;
       }, 1000);
     });
+    history.replaceState(null, "", link);
   };
+
+  onMount(() => {
+    if (link[0] === "#") link = location.origin + location.pathname + link;
+  });
 </script>
 
 <button

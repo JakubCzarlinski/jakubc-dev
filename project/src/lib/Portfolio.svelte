@@ -3,7 +3,7 @@
   import Project from "@/project/src/lib/Project.svelte";
 </script>
 
-<CopyLink link="https://jakubc.dev/#portfolio" />
+<CopyLink link="#portfolio" />
 
 <h1 class="wavy mb-12 inline-block underline-offset-[12px]">Portfolio</h1>
 
@@ -166,7 +166,7 @@ Text-to-Speech research. Specifics omitted."
 </Project>
 
 <Project
-  id="dissertaion"
+  id="dissertation"
   title="Diffusion Multi-Speaker TTS Synthesis"
   description="Third-year dissertation project focused on applying diffusion
 models to generate speech from multiple speakers. Inspired by the NaturalSpeech2

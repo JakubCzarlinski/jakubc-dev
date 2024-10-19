@@ -4,10 +4,12 @@
   import { slide } from "svelte/transition";
 
   let {
+    id,
     initialOpen = false,
     head,
     details,
   }: {
+    id?: string;
     initialOpen?: boolean;
     head?: Snippet;
     details?: Snippet;
@@ -17,7 +19,7 @@
   const onclick = () => (open = !open);
 </script>
 
-<div class="my-4">
+<div class="my-4" {id}>
   <!-- svelte-ignore a11y_invalid_attribute -->
   <a
     class="flex w-full justify-between items-center"

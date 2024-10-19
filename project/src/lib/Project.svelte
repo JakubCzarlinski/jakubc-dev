@@ -2,7 +2,7 @@
   import Accordion from "@/project/src/lib/Accordion.svelte";
   import CopyLink from "@/project/src/lib/CopyLink.svelte";
   import Top from "@/project/src/lib/Top.svelte";
-  import { onMount, type Snippet } from "svelte";
+  import { type Snippet } from "svelte";
   let {
     id = "",
     title = "",
@@ -25,14 +25,6 @@
     bottonSnippet?: Snippet;
   } = $props();
 
-  let currentDomain = $state("");
-  onMount(() => {
-    currentDomain = window.location.origin ?? "https://jakubc.dev/";
-    if (!currentDomain.endsWith("/")) {
-      currentDomain += "/";
-    }
-  });
-
   const gridDirection = imageSide === "left" ? "order-last" : "order-first";
 </script>
 
@@ -40,10 +32,10 @@
   <link rel="image" href={image} />
 </svelte:head>
 
-<Accordion {initialOpen}>
+<Accordion {initialOpen} {id}>
   {#snippet head()}
     <div>
-      <CopyLink className={"h2"} link="{currentDomain}#{id}" />
+      <CopyLink className={"h2"} link="#{id}" />
       <h2 class="wavy inline underline-offset-[12px] leading-loose">
         {title}
       </h2>
