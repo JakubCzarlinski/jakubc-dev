@@ -26,6 +26,10 @@ function removeSSR() {
 // for more information about preprocessors
 /** @type {import('@sveltejs/vite-plugin-svelte').Options} */
 export default {
-  // compilerOptions: {dev: true},
   preprocess: [removeSSR(), vitePreprocess()],
+  compilerOptions: {
+    discloseVersion: false,
+    modernAst: true,
+    dev: false,
+  }
 };
