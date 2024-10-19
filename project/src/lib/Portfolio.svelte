@@ -118,7 +118,7 @@ scalable, and visually appealing web applications."
       <p class="indent-4 pl:8 md:pl-16">
         Just because we can use gigabytes of memory, a
         <code>node_modules</code> folder large enough to be a fill a data centre,
-        and a CPU runs hotter than a nuclear reactor, doesn't mean we should. It's
+        and a CPU running hotter than a nuclear reactor, doesn't mean we should. It's
         about doing more with less. It's about being efficient.
       </p>
     </div>
