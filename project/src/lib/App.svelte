@@ -15,7 +15,7 @@
   <div class="w-full sm:w-[80%] md:w-[70%]">
     <div class="h-[10svh] min-h-fit grid grid-cols-1 gap-4 mb-8 italic">
       <div>
-        Hey~
+        Hey,
       </div>
       <div class="font-bold">
         Nice to see you here so early! This page is still under construction, but
