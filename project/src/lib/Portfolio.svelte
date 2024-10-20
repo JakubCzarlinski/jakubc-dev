@@ -85,10 +85,9 @@ scalable, and visually appealing web applications."
         <span class="wavy">0.6 seconds.</span>
         Running this website inside an Alpine Docker container, the framework handles
         over <span class="wavy">400K requests per second.</span>
-        For comparison, the `<code>hello world</code>` example for the Bun
-        server can handle about 100k requests per second in the same
-        environment. That is <span class="wavy">3.26GB versus 11.55MB</span> of data
-        transferred.
+        For comparison, the `<code>hello world</code>` example for Bun's server
+        can handle about 100k requests per second in the same environment. That
+        is <span class="wavy">3.26GB versus 11.55MB</span> of data transferred.
       </p>
 
       <h3 class="italic font-bold wavy">So what about memory footprint?</h3>
@@ -118,8 +117,8 @@ scalable, and visually appealing web applications."
       <p class="indent-4 pl:8 md:pl-16">
         Just because we can use gigabytes of memory, a
         <code>node_modules</code> folder large enough to be a fill a data centre,
-        and a CPU running hotter than a nuclear reactor, doesn't mean we should. It's
-        about doing more with less. It's about being efficient.
+        and a CPU running hotter than a nuclear reactor, doesn't mean we should.
+        It's about doing more with less. It's about being efficient.
       </p>
     </div>
   {/snippet}
