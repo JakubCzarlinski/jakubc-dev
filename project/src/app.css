@@ -220,11 +220,11 @@ body::before {
   @apply my-4;
 }
 .accordion .details {
-  @apply overflow-hidden duration-300 ease-in-out;
+  @apply overflow-hidden duration-300 ease-in-out my-4 px-4;
 }
 .accordion input:checked ~ .details {
-  @apply max-h-[9999px] translate-y-0 opacity-100 p-4;
+  @apply max-h-[9999px] translate-y-0 opacity-100;
 }
 .accordion input:not(:checked) ~ .details {
-  @apply max-h-0 translate-y-12 opacity-0 m-4;
+  @apply max-h-0 translate-y-12 opacity-0;
 }
