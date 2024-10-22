@@ -9,7 +9,6 @@ import (
 	"path"
 	"path/filepath"
 	"project/src/flags"
-	"sort"
 	"strings"
 
 	"github.com/JakubCzarlinski/go-logging"
@@ -98,12 +97,7 @@ func createHeadContents(headContents map[string]struct{}) templ.Component {
 			return err
 		}
 
-		var sortedKeys []string = make([]string, 0, len(headContents))
 		for key := range headContents {
-			sortedKeys = append(sortedKeys, key)
-		}
-		sort.Strings(sortedKeys)
-		for _, key := range sortedKeys {
 			_, err = io.WriteString(w, key)
 			if err != nil {
 				return err
