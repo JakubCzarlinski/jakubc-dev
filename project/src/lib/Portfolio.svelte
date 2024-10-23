@@ -13,8 +13,8 @@
   id="framework"
   title="Go-Svelte Framework"
   description="A blazingly
-fast full-stack framework that Server-Side Renders Svelte components into Go
-templates — at compile time! It combines the full expressivity of Svelte with the
+fast full-stack framework that Server-Side-Renders Svelte components into Go
+templates at compile time. It combines the full expressivity of Svelte with the
 speed of Go, creating an ideal synergy. This single binary is designed to
 minimize memory footprint while preserving the rapid development experience of
 the JavaScript ecosystem. It's a dream come true for developers building fast,
@@ -28,50 +28,62 @@ scalable, and visually appealing web applications."
       <img
         src="https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white&cacheSeconds=604800"
         alt="Bun"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Alpine-%230D597F?style=for-the-badge&logo=alpine-linux&logoColor=white&cacheSeconds=604800"
         alt="Alpine Linux"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white&cacheSeconds=604800"
         alt="PostgreSQL"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white&cacheSeconds=604800"
         alt="Vite"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white&cacheSeconds=604800"
         alt="TypeScript"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/gin-%23008ECF?style=for-the-badge&logo=gin&logoColor=white&cacheSeconds=604800"
         alt="Gin"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white&cacheSeconds=604800"
         alt="Go"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white&cacheSeconds=604800"
         alt="Docker"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white&cacheSeconds=604800"
         alt="Tailwind CSS"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white&cacheSeconds=604800"
         alt="Cloudflare"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/svelte-%23f1413d.svg?style=for-the-badge&logo=svelte&logoColor=white&cacheSeconds=604800"
         alt="Svelte"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/RollupJS-ef3335?style=for-the-badge&logo=rollup.js&logoColor=white&cacheSeconds=604800"
         alt="RollupJS"
+        height="28"
       />
     </div>
   {/snippet}
@@ -139,26 +151,32 @@ Text-to-Speech research. Specifics omitted."
       <img
         src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white&cacheSeconds=604800"
         alt="NumPy"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54&cacheSeconds=604800"
         alt="Python"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white&cacheSeconds=604800"
         alt="Go"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white&cacheSeconds=604800"
         alt="Jupyter"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white&cacheSeconds=604800"
         alt="TensorFlow"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/JAX-%23ab00b6?style=for-the-badge&logoColor=white&cacheSeconds=604800"
         alt="JAX"
+        height="28"
       />
     </div>
   {/snippet}
@@ -179,30 +197,37 @@ model with speaker embeddings rather than whole sections of audio."
       <img
         src="https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white&cacheSeconds=604800"
         alt="NumPy"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Overleaf-%23336699.svg?style=for-the-badge&logo=overleaf&logoColor=white&cacheSeconds=604800"
         alt="Overleaf"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54&cacheSeconds=604800"
         alt="Python"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white&cacheSeconds=604800"
         alt="PyTorch"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=Jupyter&logoColor=white&cacheSeconds=604800"
         alt="Jupyter"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/Hugging%20Face-%23FFD21E?style=for-the-badge&logo=Hugging-Face&logoColor=black&cacheSeconds=604800"
         alt="Hugging Face"
+        height="28"
       />
       <img
         src="https://img.shields.io/badge/conda-342B029.svg?&style=for-the-badge&logo=anaconda&logoColor=white&cacheSeconds=604800"
         alt="Conda"
+        height="28"
       />
     </div>
   {/snippet}

@@ -26,10 +26,10 @@
     class="flex w-full justify-between items-center cursor-pointer"
   >
     {@render head?.()}
-    <div class="mr-4 font-extrabold">V</div>
+    <div class="mr-4 pt-4 font-extrabold">V</div>
   </label>
 
-  <div class="details m-4">
+  <div class="details">
     {@render details?.()}
   </div>
 </div>

@@ -12,7 +12,7 @@
 </div>
 
 <div class="grid grid-cols-1 place-items-center px-4">
-  <div class="w-full sm:w-[80%] md:w-[70%]">
+  <div class="w-full sm:w-[80%] md:w-[70%] max-w-3xl">
     <div class="h-[10svh] min-h-fit grid grid-cols-1 gap-4 mb-8 italic">
       <div>
         Hey,
@@ -20,6 +20,17 @@
       <div class="font-bold">
         Nice to see you here so early! This page is still under construction, but
         feel free to look around.
+      </div>
+      <div>
+        In the meantime, check out my GitHub profile or LinkedIn.
+      </div>
+      <div>
+        <a class="wavy" href="https://www.github.com/JakubCzarlinski" target="_blank">
+          GitHub
+        </a>
+        <a class="wavy" href="https://www.linkedin.com/in/jakub-czarlinski" target="_blank">
+          LinkedIn
+        </a>
       </div>
       <div>
         - Jakub
