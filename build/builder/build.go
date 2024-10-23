@@ -69,8 +69,6 @@ func main() {
 			logging.FatalF(err.Error())
 		}
 
-		logging.InfoF("Hash created in %d ms", time.Since(startTime).Milliseconds())
-
 		bundlingWaitGroup.Add(1)
 		go func() {
 			defer bundlingWaitGroup.Done()
@@ -208,6 +206,12 @@ func createHash() (string, error) {
 	binaryData := make([]byte, 8)
 	binary.LittleEndian.PutUint64(binaryData, uint64(timestamp))
 	base64Data := base64.StdEncoding.EncodeToString(binaryData)
+
+	// Make sure the hash base64 is URL safe
+	base64Data = strings.ReplaceAll(base64Data, "+", "-")
+	base64Data = strings.ReplaceAll(base64Data, "/", "_")
+	base64Data = strings.ReplaceAll(base64Data, "=", "")
+
 	err := os.WriteFile("hash.txt", []byte(base64Data), 0644)
 	if err != nil {
 		return base64Data, logging.Bubble(err, "Error writing hash file")
