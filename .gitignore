@@ -49,3 +49,4 @@ go.work.sum
 /project/gen/
 
 *_templ.go
+hash.txt

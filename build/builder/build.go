@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/base64"
+	"encoding/binary"
 	"fmt"
 	"io/fs"
 	"os"
@@ -45,7 +47,6 @@ func runProcess(dir string, command string, args ...string) error {
 func main() {
 	args := os.Args[1:]
 	startTime := time.Now()
-	var err error
 
 	// If no arguments are passed, build the project in full
 	if len(args) == 0 {
@@ -62,6 +63,14 @@ func main() {
 		var builderElapsedTime time.Duration
 		var frontendBuildElapsedTime time.Duration
 		var bundlingWaitGroup sync.WaitGroup
+
+		hash, err := createHash()
+		if err != nil {
+			logging.FatalF(err.Error())
+		}
+
+		logging.InfoF("Hash created in %d ms", time.Since(startTime).Milliseconds())
+
 		bundlingWaitGroup.Add(1)
 		go func() {
 			defer bundlingWaitGroup.Done()
@@ -100,7 +109,7 @@ func main() {
 		frontendBuildElapsedTime = time.Since(frontendBuildStartTime)
 
 		builderStartTime := time.Now()
-		err = renderToTempl()
+		err = renderToTempl(hash)
 		if err != nil {
 			logging.FatalF(err.Error())
 		}
@@ -194,16 +203,20 @@ func runBuild(buildStep []func() error) {
 	}
 }
 
-func renderToTempl() error {
-	output, err := exec.Command("git", "rev-parse", "HEAD").Output()
+func createHash() (string, error) {
+	timestamp := time.Now().UnixNano() / int64(time.Millisecond)
+	binaryData := make([]byte, 8)
+	binary.LittleEndian.PutUint64(binaryData, uint64(timestamp))
+	base64Data := base64.StdEncoding.EncodeToString(binaryData)
+	err := os.WriteFile("hash.txt", []byte(base64Data), 0644)
 	if err != nil {
-		return logging.Bubble(err, "Error running git command")
+		return base64Data, logging.Bubble(err, "Error writing hash file")
 	}
-	gitHash := strings.Trim(string(output), "\n")
-	if gitHash == "" {
-		return logging.Bubble(err, "Error getting git hash")
-	}
-	err = runProcess(".", renderToTemplDir+"main.exe", "-in", svelteCompileDir, "-out", genDir, "-gitHash", gitHash)
+	return base64Data, nil
+}
+
+func renderToTempl(hash string) error {
+	err := runProcess(".", renderToTemplDir+"main.exe", "-in", svelteCompileDir, "-out", genDir, "-hash", hash)
 	if err != nil {
 		return logging.Bubble(err, "Error running frontend builder")
 	}

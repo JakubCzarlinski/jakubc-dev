@@ -51,3 +51,4 @@ go.work.sum
 /build/render
 
 *_templ.go
+hash.txt

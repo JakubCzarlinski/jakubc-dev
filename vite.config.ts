@@ -1,24 +1,17 @@
-"use strict";
-
 import purgecss from "@fullhuman/postcss-purgecss";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import autoprefixer from "autoprefixer";
-import { exec } from "child_process";
+import { readFile } from "fs/promises";
 import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
 import { resolve } from "./require.ts";
 import config from "./tailwind.config.ts";
 
-// Get current git hash.
-const gitHash = await new Promise<string>((resolve) => {
-  exec("git rev-parse HEAD", (error, stdout, _stderr) => {
-    if (error) {
-      // Crash the build if git hash is not available.
-      console.error("Failed to get git hash:", error);
-      process.exit(1);
-    }
-    resolve(stdout.trim());
-  });
+const hash = await new Promise<string>((r) => {
+  // Read the hash from ./hash.txt
+  readFile(resolve(__dirname, "./hash.txt"), "utf-8")
+    .then((hash) => r(hash.trim()))
+    .catch(() => r(""));
 });
 
 // https://vitejs.dev/config/
@@ -42,11 +35,15 @@ export default defineConfig({
   build: {
     // minify: false,
     rollupOptions: {
+      maxParallelFileOps: 128,
       output: {
-        entryFileNames: `assets/[name]-${gitHash}.js`,
-        chunkFileNames: `assets/[name]-${gitHash}.js`,
-        assetFileNames: `assets/[name]-${gitHash}.[ext]`,
+        entryFileNames: `assets/[name]-${hash}.js`,
+        chunkFileNames: `assets/[name]-${hash}.js`,
+        assetFileNames: `assets/[name]-${hash}.[ext]`,
         manualChunks(id) {
+          if (id.includes("index") || id.includes("index-client")) {
+            return "index";
+          }
           if (
             (id.includes("node_modules") &&
               id.includes("svelte") &&
@@ -55,7 +52,7 @@ export default defineConfig({
                 id.includes("transition"))) ||
             id.includes("index-client")
           ) {
-            return "svelte";
+            return "index";
           }
         },
       },

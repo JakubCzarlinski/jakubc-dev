@@ -19,19 +19,24 @@ RUN apk add git
 RUN go install github.com/a-h/templ/cmd/templ@latest
 RUN go install github.com/sqlc-dev/sqlc/cmd/sqlc@latest
 
-RUN git clone https://github.com/JakubCzarlinski/jakubc-dev /app/
-
-WORKDIR /app
-
-RUN git submodule update --init --recursive
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr /app/build/render
+RUN git clone https://github.com/JakubCzarlinski/svelte-ssr-to-templ /app/build/render_to_templ
 
 RUN go -C /app/build/render_to_templ/ mod download
 
+WORKDIR /app
+COPY package.json /app/package.json
 RUN bun install
 
+COPY ./project/go.mod /app/project/go.mod
+COPY ./project/go.sum /app/project/go.sum
 RUN go -C /app/project mod download
 
+COPY ./build/builder/go.mod /app/build/builder/go.mod
+COPY ./build/builder/go.sum /app/build/builder/go.sum
 RUN go -C /app/build/builder mod download
+
+COPY . /app
 
 RUN go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
 RUN go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
