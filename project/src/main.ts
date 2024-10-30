@@ -7,28 +7,31 @@ function getComponentName(path: string) {
 }
 
 for (const path in modules) {
-  const elem = document.getElementsByClassName(getComponentName(path));
-  const length = elem.length;
+  const elements = document.getElementsByClassName(getComponentName(path));
+  const length = elements.length;
   if (length === 0) continue;
 
   modules[path]().then((result) => {
     for (let i = 0; i < length; i++) {
-      mountComponent(elem[i], (result as { default: any }).default);
+      mountComponent(
+        elements[i] as HTMLElement,
+        (result as { default: any }).default,
+      );
     }
   });
 }
 
-async function mountComponent(element: Element, Component: any) {
+async function mountComponent(element: HTMLElement, Component: any) {
   if (element.firstElementChild === null) return;
-  const attr = element.getAttribute("svelte");
-  if (attr === null) return;
+  const attr = element.dataset.svelte;
+  if (attr === undefined) return;
 
   hydrate(Component, {
     target: element.firstElementChild,
     props: JSON.parse(attr),
   });
   element.replaceChildren(...element.children[0].children);
-  element.removeAttribute("svelte");
+  delete element.dataset.svelte;
 }
 
 // Onpage load event
