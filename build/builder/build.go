@@ -372,7 +372,7 @@ func serverSideRender() error {
 		return logging.Bubble(err, "Error removing queue directory")
 	}
 
-	err = runProcess(svelteDir, "bun", "run", "--bun", "--logLevel=error", "./build/render/dist/main.js", "-i", libDir, "-o", svelteCompileDir)
+	err = runProcess(svelteDir, "bun", "run", "--logLevel=error", "./build/render/dist/main.js", "-i", libDir, "-o", svelteCompileDir)
 	if err != nil {
 		return logging.Bubble(err, "Error running render process")
 	}
