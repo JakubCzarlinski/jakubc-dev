@@ -15,5 +15,6 @@
     ".git",
     ".exe",
     ".vscode"
-  ]
+  ],
+  "reloadTime": 100
 }
