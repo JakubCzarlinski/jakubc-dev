@@ -38,7 +38,7 @@ func main() {
 
 			for {
 				message := "data:" + "\n\n"
-				message += "retry: 300\n\n"
+				message += "retry: 500\n\n"
 				_, err := ginContext.Writer.Write([]byte(message))
 				if err != nil {
 					logging.Info(logging.Blue("Reloading..."))

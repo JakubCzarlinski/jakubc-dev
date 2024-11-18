@@ -254,6 +254,7 @@ func goFormat() error {
 }
 
 func buildGoServer() error {
+	// cd project && go build -tags "sonic avx" -ldflags=-s -w -o ../main.exe ./src/main.go
 	err := runProcess(golangRootDir, "go", "build", "-tags", "sonic avx", "-ldflags=-s -w", "-o", "../main.exe", "./src/main.go")
 	if err != nil {
 		return logging.Bubble(err, "Error building Go server")
@@ -359,7 +360,9 @@ func convertStructsToTypescript() error {
 }
 
 func viteBundle() error {
-	err := runProcess(svelteDir, "bun", "run", "--bun", "--silent", "vite", "build", "--logLevel", "error")
+	// bun run --bun --silent vite build --logLevel error
+	// err := runProcess(svelteDir, "bun", "run", "--bun", "--silent", "vite", "build", "--logLevel", "error")
+	err := runProcess(svelteDir, "bun", "run", "farm", "build")
 	if err != nil {
 		return logging.Bubble(err, "Error building Svelte frontend")
 	}

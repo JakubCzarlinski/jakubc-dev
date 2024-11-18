@@ -24,27 +24,18 @@ var bufferPool = pooling.CreateBytesBufferPool(1024 * 12)
 func init() {
 	var ex, _ = os.Executable()
 	var exPath = filepath.Dir(ex)
-	file, err := os.Open(path.Join(exPath, flags.DistDir+"index.html"))
-	if err != nil {
-		logging.FatalBubble(err, "Error reading file")
-	}
-	defer file.Close()
-	// Read the file into indexScripts
-	headTags := &strings.Builder{}
-	_, err = io.Copy(headTags, file)
-	if err != nil {
-		logging.FatalBubble(err, "Error reading file")
-	}
-	indexScripts = headTags.String()
-	indexScripts = strings.ReplaceAll(indexScripts, "\n", "")
-
+	// Read all the stylesheets
 	files, err := os.ReadDir(path.Join(exPath, flags.AssestsDir))
 	if err != nil {
 		logging.FatalBubble(err, "Error reading directory")
 	}
-
 	for _, file := range files {
 		filename := file.Name()
+
+		if strings.HasSuffix(filename, ".js") && strings.HasPrefix(filename, "index-") {
+			indexScripts = fmt.Sprintf(`<script type="module" src="/assets/%s"></script>`, filename)
+		}
+
 		if strings.HasSuffix(filename, ".css") {
 			stylesheets[filename[:len(filename)-4]] = fmt.Sprintf(`<link rel="stylesheet" href="/assets/%s"/>`, filename)
 		}
