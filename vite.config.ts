@@ -1,11 +1,9 @@
 import purgecss from "@fullhuman/postcss-purgecss";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-import autoprefixer from "autoprefixer";
+import tailwindcss from "@tailwindcss/vite";
 import { readFile } from "fs/promises";
-import tailwindcss from "tailwindcss";
 import { defineConfig } from "vite";
 import { resolve } from "./require.ts";
-import config from "./tailwind.config.ts";
 
 const hash = await new Promise<string>((r) => {
   // Read the hash from ./hash.txt
@@ -17,15 +15,11 @@ const hash = await new Promise<string>((r) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     svelte({ compilerOptions: { modernAst: true } }),
     // @ts-ignore
     purgecss({}),
   ],
-  css: {
-    postcss: {
-      plugins: [tailwindcss({ config }), autoprefixer()],
-    },
-  },
   resolve: {
     alias: {
       "@": resolve(__dirname, "./"),
