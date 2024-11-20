@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind variants;
+@import "tailwindcss";
 
 :root {
   --bg: #f0dba5;
@@ -13,21 +10,21 @@
 }
 
 body {
-  @apply h-svh;
+  /* @apply h-svh; */
 }
 
 ::selection {
-  @apply bg-secondary-700;
+  /* @apply bg-secondary-700; */
 }
 ::-moz-selection {
-  @apply bg-secondary-700;
+  /* @apply bg-secondary-700; */
 }
 
 h1 {
-  @apply h1;
+  /* @apply h1; */
 }
 h2 {
-  @apply h2;
+  /* @apply h2; */
 }
 
 body::before,
@@ -203,15 +200,15 @@ body::before {
 }
 
 .wavy {
-  @apply underline decoration-secondary-500 decoration-wavy;
+  /* @apply underline decoration-secondary-500 decoration-wavy; */
 }
 
 .hover-text {
-  @apply transition-colors duration-200 ease-expo hover:text-secondary-400;
+  /* @apply transition-colors duration-200 ease-expo hover:text-secondary-400; */
 }
 
 .tooltip {
-  @apply absolute -top-8 whitespace-nowrap bg-surface-800 p-2 text-sm text-white;
+  /* @apply absolute -top-8 whitespace-nowrap bg-surface-800 p-2 text-sm text-white; */
   left: 50%;
   transform: translateX(-50%);
 }

@@ -359,7 +359,7 @@ func convertStructsToTypescript() error {
 }
 
 func viteBundle() error {
-	err := runProcess(svelteDir, "bun", "run", "--bun", "--silent", "vite", "build", "--logLevel", "error")
+	err := runProcess(svelteDir, "bun", "run", "rsbuild", "build")
 	if err != nil {
 		return logging.Bubble(err, "Error building Svelte frontend")
 	}

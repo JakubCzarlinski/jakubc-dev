@@ -1,4 +1,4 @@
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { pluginSvelte } from "@rsbuild/plugin-svelte";
 
 const csrRegexHTML =
   /<!--\s+CSR\s+-->([\s\S]*?)<!--\s+SSR\s+-->([\s\S]*?)<!--\s+END\s+-->/gm;
@@ -26,7 +26,7 @@ function removeSSR() {
 // for more information about preprocessors
 /** @type {import('@sveltejs/vite-plugin-svelte').Options} */
 export default {
-  preprocess: [removeSSR(), vitePreprocess()],
+  preprocess: [removeSSR(), pluginSvelte()],
   compilerOptions: {
     discloseVersion: false,
     modernAst: true,

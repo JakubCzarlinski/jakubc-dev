@@ -1,24 +1,24 @@
 import "@/project/src/app.css";
 import { hydrate } from "svelte";
 
-const modules = import.meta.glob("@/project/src/lib/**/*.svelte");
+const modules = import.meta.webpackContext("@/project/src/lib/", {
+  recursive: true,
+  regExp: /\.svelte$/,
+});
 function getComponentName(path: string) {
   return path.slice(path.lastIndexOf("/") + 1, -".svelte".length);
 }
 
-for (const path in modules) {
+for (const path in modules.keys()) {
   const elements = document.getElementsByClassName(getComponentName(path));
   const length = elements.length;
   if (length === 0) continue;
 
-  modules[path]().then((result) => {
-    for (let i = 0; i < length; i++) {
-      mountComponent(
-        elements[i] as HTMLElement,
-        (result as { default: any }).default,
-      );
-    }
-  });
+  const module = modules(path);
+
+  for (let i = 0; i < length; i++) {
+    mountComponent(elements[i] as HTMLElement, module);
+  }
 }
 
 async function mountComponent(element: HTMLElement, Component: any) {
