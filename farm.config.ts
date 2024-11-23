@@ -31,15 +31,12 @@ function customHash(hash: string): JsPlugin {
 }
 
 export default defineConfig({
-  vitePlugins: [
-    svelte({ compilerOptions: { modernAst: true } }),
-  ],
+  vitePlugins: [svelte({ compilerOptions: { modernAst: true } })],
   plugins: [farmPluginPostcss({}), customHash(hash)],
   compilation: {
     mode: "production",
     // minify: false,
-    external: [
-    ],
+    external: [],
     sourcemap: false,
     externalNodeBuiltins: true,
     resolve: {
