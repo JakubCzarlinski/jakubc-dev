@@ -10,7 +10,7 @@
 }
 
 body {
-  /* @apply h-svh; */
+  @apply h-svh;
 }
 
 ::selection {
@@ -201,14 +201,17 @@ body::before {
 
 .wavy {
   /* @apply underline decoration-secondary-500 decoration-wavy; */
+  @apply underline decoration-wavy;
 }
 
 .hover-text {
   /* @apply transition-colors duration-200 ease-expo hover:text-secondary-400; */
+  @apply transition-colors duration-200;
 }
 
 .tooltip {
   /* @apply absolute -top-8 whitespace-nowrap bg-surface-800 p-2 text-sm text-white; */
+  @apply absolute whitespace-nowrap p-2 text-sm text-white;
   left: 50%;
   transform: translateX(-50%);
 }
