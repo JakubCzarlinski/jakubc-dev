@@ -17,6 +17,7 @@ const hash = await new Promise<string>((r) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    // @ts-ignore
     svelte({ compilerOptions: { modernAst: true } }),
     // @ts-ignore
     purgecss({}),
