@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.23.2-alpine AS golang
+FROM golang:1.24.3-alpine AS golang
 
 FROM oven/bun:1.1.31-alpine AS builder
 
