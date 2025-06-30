@@ -13,7 +13,7 @@
 
 <div class="grid grid-cols-1 place-items-center px-4">
   <div class="w-full sm:w-[80%] md:w-[70%] max-w-3xl">
-    <div class="h-[10svh] min-h-fit grid grid-cols-1 gap-4 mb-8 italic">
+    <div class="min-h-fit grid grid-cols-1 gap-4 mb-8 italic">
       <div>
         Hey,
       </div>
