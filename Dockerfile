@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.24.3-alpine AS golang
+FROM golang:1.24.4-alpine AS golang
 
-FROM oven/bun:1.1.31-alpine AS builder
+FROM oven/bun:1.2.17-alpine AS builder
 
 COPY --from=golang /usr/local/go/ /usr/local/go/
 ENV GOPATH=/go
@@ -41,7 +41,6 @@ COPY . /app
 RUN go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
 RUN go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 RUN /app/build/builder/build.exe
-
 
 FROM alpine:latest
 
