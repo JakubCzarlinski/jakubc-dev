@@ -33,21 +33,21 @@ COPY ./project/go.sum /app/project/go.sum
 COPY ./build/builder/go.mod /app/build/builder/go.mod
 COPY ./build/builder/go.sum /app/build/builder/go.sum
 
-RUN --mount=type=cache,sharing=locked,id=bun-cache,target=/root/.cache bun install
-RUN --mount=type=cache,sharing=locked,id=gomod,target=/go/pkg/mod \
+RUN --mount=type=cache,sharing=locked,id=shared-bun-cache,target=/root/.cache bun install
+RUN --mount=type=cache,sharing=locked,id=shared-gomod,target=/go/pkg/mod \
     go -C /app/project mod download
-RUN --mount=type=cache,sharing=locked,id=gomod-builder,target=/go/pkg/mod \
+RUN --mount=type=cache,sharing=locked,id=shared-gomod-builder,target=/go/pkg/mod \
     go -C /app/build/builder mod download
 
 COPY . /app
 
 # 5. Build
-RUN --mount=type=cache,sharing=locked,id=go-build-render,target=/root/.cache/go-build \
+RUN --mount=type=cache,sharing=locked,id=shared-go-build-render,target=/root/.cache/go-build \
     go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN --mount=type=cache,sharing=locked,id=go-build-builder,target=/root/.cache/go-build \
+RUN --mount=type=cache,sharing=locked,id=shared-go-build-builder,target=/root/.cache/go-build \
     go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 
-RUN --mount=type=cache,sharing=locked,id=go-build-run,target=/root/.cache/go-build \
+RUN --mount=type=cache,sharing=locked,id=shared-go-build-run,target=/root/.cache/go-build \
     /app/build/builder/build.exe
 
 FROM alpine:latest
