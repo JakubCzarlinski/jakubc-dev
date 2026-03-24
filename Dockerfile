@@ -33,22 +33,17 @@ COPY ./project/go.sum /app/project/go.sum
 COPY ./build/builder/go.mod /app/build/builder/go.mod
 COPY ./build/builder/go.sum /app/build/builder/go.sum
 
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-bun,target=/root/.cache bun install
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-gomod,target=/go/pkg/mod \
-    go -C /app/project mod download
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-gomod_builder,target=/go/pkg/mod \
-    go -C /app/build/builder mod download
+RUN bun install
+RUN go -C /app/project mod download
+RUN go -C /app/build/builder mod download
 
 COPY . /app
 
 # 5. Build
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-go-build-render,target=/root/.cache/go-build \
-    go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-go-build-builder,target=/root/.cache/go-build \
-    go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
+RUN go -C /app/build/render_to_templ/ build -ldflags="-s -w" -o ./main.exe ./cmd/main.go
+RUN go -C /app/build/builder/ build -ldflags="-s -w" -o ./build.exe ./build.go
 
-RUN --mount=type=cache,sharing=locked,id=s/patient-presence-go-build-run,target=/root/.cache/go-build \
-    /app/build/builder/build.exe
+RUN /app/build/builder/build.exe
 
 FROM alpine:latest
 
